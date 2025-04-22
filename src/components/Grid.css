@@ -1,0 +1,17 @@
+
+.grid {
+    align-items: center;
+}
+
+span {
+    background-color: rgb(255, 255, 255);
+    height: 50px;
+    width: 50px;
+    display: inline-block;
+    border: 1px solid #000;
+    cursor: pointer;
+}
+
+.row {
+    height: 50px;
+}

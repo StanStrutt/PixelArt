@@ -1,21 +1,21 @@
 import "./Grid.css"
 import { useState } from "react";
-import Grid from "./Grid";
+import Cell from "./Cell";
 
 
 export default function DrawingTool () {
 
-    const [gridSize, setGridSize] = useState(16)
+    const [gridSize, setGridSize] = useState(16);
 
     const totalSquares = gridSize * gridSize;
 
     const handleGridChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        setGridSize(Number(e.target.value))
-    }
+        setGridSize(Number(e.target.value));
+    };
 
-    return(
+    return (
         <>
-            {/* <button onClick={}>clear</button> */}
+            {/* <button onClick={() => setSquareColour("white")}>clear</button> */}
             <select value={gridSize} onChange={handleGridChange}>
                 <option hidden selected>Grid size</option>
                 <option value={16}>16x16</option>
@@ -28,10 +28,9 @@ export default function DrawingTool () {
             gap: "1px",
             }}>
                 {Array.from({ length: totalSquares }).map((_, index) => (
-                    <Grid key={index}/>
+                    <Cell key={index}/>
                 ))}
             </div>
-
         </>
-    )
+    );
 }

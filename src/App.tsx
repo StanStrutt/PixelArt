@@ -1,12 +1,12 @@
 import './App.css'
-import Grid from './components/Grid'
+import DrawingTool from './components/DrawingTool'
 
 export default function App() {
 
 
   return (
     <>
-      <Grid/>
+      <DrawingTool/>
     </>
   )
 }

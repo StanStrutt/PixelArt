@@ -4,7 +4,6 @@ import Cell from "./Cell";
 
 
 export default function DrawingTool () {
-
     const [gridSize, setGridSize] = useState(16);
 
     const totalSquares = gridSize * gridSize;
@@ -15,7 +14,7 @@ export default function DrawingTool () {
 
     return (
         <>
-            {/* <button onClick={() => setSquareColour("white")}>clear</button> */}
+            <button>clear</button>
             <select value={gridSize} onChange={handleGridChange}>
                 <option hidden selected>Grid size</option>
                 <option value={16}>16x16</option>

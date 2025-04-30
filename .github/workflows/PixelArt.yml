@@ -1,0 +1,51 @@
+name: CI/CD
+
+on: [push]
+
+jobs:
+  deploy-dev:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        ref: main
+    - name: Setup Node
+      uses: actions/setup-node@v1
+      with:
+        node-version: 20.x
+    - name: Install Dependencies
+      run: npm install
+    - name: Build
+      run: npm run build
+    - name: Deploy
+      uses: South-Paw/action-netlify-deploy@v1.2.0
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        netlify-auth-token: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        netlify-site-id: ${{ secrets.NETLIFY_SITE_ID_DEV }}
+        build-dir: './build'
+  deploy-prod:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/stable'
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        ref: stable
+    - name: Setup Node
+      uses: actions/setup-node@v1
+      with:
+        node-version: 20.x
+    - name: Install Dependencies
+      run: npm install
+    - name: Build
+      run: npm run build
+    - name: Deploy
+      uses: South-Paw/action-netlify-deploy@v1.2.0
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        netlify-auth-token: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        netlify-site-id: ${{ secrets.NETLIFY_SITE_ID_PROD }}
+        build-dir: './build'

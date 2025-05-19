@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./DrawingTool.css"
 
 const COLOURS = [
     "rgb(255, 255, 255)",

@@ -25,7 +25,7 @@ jobs:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         netlify-auth-token: ${{ secrets.NETLIFY_AUTH_TOKEN }}
         netlify-site-id: ${{ secrets.NETLIFY_SITE_ID_DEV }}
-        build-dir: './build'
+        build-dir: './dist'
   deploy-prod:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/stable'
@@ -48,4 +48,4 @@ jobs:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         netlify-auth-token: ${{ secrets.NETLIFY_AUTH_TOKEN }}
         netlify-site-id: ${{ secrets.NETLIFY_SITE_ID_PROD }}
-        build-dir: './build'
+        build-dir: './dist'
